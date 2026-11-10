@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 315" role="img" aria-labelledby="title">
+  <title id="title">两根绳悬挂两下球，两下球托住上球</title>
+  <g stroke="#243c5a" stroke-width="2.5" fill="none">
+    <path d="M221 27h58m-52 0 8-9m8 9 8-9m8 9 8-9M250 28l-66 237m66-237 66 237"/>
+    <circle cx="184" cy="265" r="44" fill="#eff3f7"/><circle cx="316" cy="265" r="44" fill="#eff3f7"/>
+    <circle cx="250" cy="207" r="44" fill="#eff3f7"/>
+    <path d="M250 28v265m0-86 66 58m-66-58-66 58" stroke-dasharray="5 4" stroke="#708096" stroke-width="1.5"/>
+    <path d="M250 101q10 0 19-3m-19 144q14 0 26-12" stroke="#708096" stroke-width="1.5"/>
+  </g>
+  <g fill="#243c5a" font-family="serif" font-size="20">
+    <text x="265" y="45">O</text><text x="256" y="127">α</text><text x="260" y="256">β</text>
+  </g>
+</svg>

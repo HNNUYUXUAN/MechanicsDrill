@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="520" viewBox="0 0 840 520">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8" fill="none" stroke="#315369" stroke-width="1.6"/></marker></defs>
+<rect width="840" height="520" fill="#fff"/>
+<circle cx="390" cy="260" r="190" fill="#e8eff3" stroke="#315369" stroke-width="3"/>
+<circle cx="390" cy="260" r="118" fill="none" stroke="#9aa8b1" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="390" cy="260" r="130" fill="none" stroke="#b4232c" stroke-width="3" stroke-dasharray="4 5"/>
+<path d="M518 230 A130 130 0 0 1 518 290 L506 288 A118 118 0 0 0 506 232 Z" fill="#b4232c" opacity="0.22" stroke="#b4232c" stroke-width="1.5"/>
+<circle cx="390" cy="260" r="5" fill="#202020"/>
+<path d="M390 260 L580 260" stroke="#315369" stroke-width="2.5" marker-end="url(#arr)"/>
+<path d="M500 260 L522 260" stroke="#b4232c" stroke-width="8" opacity="0.45"/>
+<path d="M390 260 L390 48" stroke="#202020" stroke-width="2.5" marker-end="url(#arr)"/>
+<path d="M560 165 A205 205 0 0 1 560 355" fill="none" stroke="#b4232c" stroke-width="3" marker-end="url(#arr)"/>
+<g font-family="Times New Roman,serif" font-size="27" fill="#202020">
+ <text x="366" y="290">O</text><text x="596" y="270">a</text><text x="410" y="62">z</text>
+ <text x="540" y="148" fill="#b4232c">ω</text><text x="458" y="245">r</text>
+
+</g>
+<text x="600" y="485" font-family="Noto Serif CJK SC,serif" font-size="19" fill="#626262">圆片俯视图与微元环（示意图，非按比例）</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="title desc">
+<title id="title">三球系统的隔离体受力图</title><desc id="desc">左图为上方球，受两个对称支持力和重力；右图为一个下方球，受绳张力、上方球压力和重力。</desc><rect width="100%" height="100%" fill="#ffffff"/>
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L8,4 L0,8 z" fill="#315369" />
+  </marker>
+  <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L8,4 L0,8 z" fill="#b4232c" />
+  </marker>
+  <style>
+    .line{stroke:#202020;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .thin{stroke:#626262;stroke-width:1.8;fill:none}
+    .dash{stroke:#888;stroke-width:1.8;fill:none;stroke-dasharray:8 7}
+    .force{stroke:#315369;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    .weight{stroke:#b4232c;stroke-width:3;fill:none;marker-end:url(#arrow-red)}
+    .label{font-family:'Times New Roman',serif;font-size:24px;fill:#202020}
+    .small{font-family:'Times New Roman',serif;font-size:20px;fill:#626262}
+    .caption{font-family:SimSun,'Songti SC',serif;font-size:19px;fill:#626262}
+  </style>
+</defs>
+  <line x1="500" y1="32" x2="500" y2="485" class="thin" />
+  <text x="40" y="40" class="label">Upper sphere</text>
+  <circle cx="250" cy="245" r="68" class="line"/><circle cx="250" cy="245" r="4" fill="#202020"/>
+  <line x1="250" y1="120" x2="250" y2="400" class="dash"/>
+  <line x1="250" y1="245" x2="160" y2="105" class="force"/><text x="110" y="104" class="label">N</text>
+  <line x1="250" y1="245" x2="340" y2="105" class="force"/><text x="350" y="104" class="label">N</text>
+  <line x1="250" y1="245" x2="250" y2="390" class="weight"/><text x="265" y="395" class="label">mg</text>
+  <path d="M250 165 A80 80 0 0 0 206 179" class="thin"/><text x="196" y="160" class="label">β</text>
+  <text x="550" y="40" class="label">One lower sphere</text>
+  <circle cx="735" cy="250" r="68" class="line"/><circle cx="735" cy="250" r="4" fill="#202020"/>
+  <line x1="735" y1="115" x2="735" y2="430" class="dash"/>
+  <line x1="735" y1="250" x2="640" y2="95" class="force"/><text x="596" y="90" class="label">T</text>
+  <line x1="735" y1="250" x2="845" y2="425" class="force"/><text x="855" y="430" class="label">N</text>
+  <line x1="735" y1="250" x2="735" y2="420" class="weight"/><text x="750" y="420" class="label">mg</text>
+  <path d="M735 165 A82 82 0 0 0 690 178" class="thin"/><text x="682" y="158" class="label">α</text>
+  <text x="790" y="336" class="label">β</text>
+  <text x="40" y="492" class="small">Upper: 2N cos β = mg; lower: T sin α = N sin β; T cos α = mg + N cos β</text>
+</svg>

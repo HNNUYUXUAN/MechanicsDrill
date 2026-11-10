@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+<defs>
+ <marker id="blueArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8" fill="none" stroke="#315369" stroke-width="1.6"/></marker>
+ <marker id="redArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8" fill="none" stroke="#b4232c" stroke-width="1.6"/></marker>
+</defs>
+<rect width="900" height="520" fill="#fff"/>
+<path d="M70 400 H830" stroke="#202020" stroke-width="2" marker-end="url(#blueArrow)"/>
+<path d="M70 400 V55" stroke="#202020" stroke-width="2" marker-end="url(#blueArrow)"/>
+<path d="M90 400 Q300 -5 700 400" fill="none" stroke="#9aa8b1" stroke-width="3" stroke-dasharray="10 9"/>
+<path d="M90 400 Q290 0 490 210" fill="none" stroke="#315369" stroke-width="3"/>
+<circle cx="90" cy="400" r="5" fill="#202020"/><circle cx="490" cy="210" r="5" fill="#202020"/>
+<g stroke="#202020" stroke-width="3" fill="none" stroke-linecap="round">
+ <circle cx="490" cy="156" r="17"/><path d="M490 174 L490 220 M490 190 L470 205 M490 190 L510 205 M490 220 L472 246 M490 220 L508 246"/>
+</g>
+<circle cx="445" cy="210" r="7" fill="#b4232c"/>
+<path d="M490 190 H595" stroke="#315369" stroke-width="3" marker-end="url(#blueArrow)"/>
+<path d="M445 210 H350" stroke="#b4232c" stroke-width="3" marker-end="url(#redArrow)"/>
+<path d="M90 400 L210 330" stroke="#315369" stroke-width="3" marker-end="url(#blueArrow)"/>
+<path d="M155 400 A65 65 0 0 0 146 366" stroke="#b4232c" stroke-width="2" fill="none"/>
+<g font-family="Times New Roman,serif" font-size="26" fill="#202020">
+ <text x="842" y="410">x</text><text x="48" y="50">y</text><text x="216" y="321">v<tspan baseline-shift="sub" font-size="18">0</tspan></text>
+ <text x="160" y="386" fill="#b4232c">α</text><text x="606" y="181" fill="#315369">v′</text>
+ <text x="350" y="194" fill="#b4232c">u</text><text x="510" y="125">P</text>
+ <text x="76" y="430">O</text><text x="675" y="430">A</text>
+</g>
+<text x="540" y="485" font-family="Noto Serif CJK SC,serif" font-size="19" fill="#626262">抛出瞬间水平动量守恒（示意图，非按比例）</text>
+</svg>

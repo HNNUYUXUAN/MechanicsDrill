@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 290" role="img" aria-labelledby="title">
+  <title id="title">均质棒端点 A 抵住墙，棒身在棱角 P 处接触</title>
+  <g fill="none" stroke="#243c5a" stroke-width="3">
+    <path d="M65 30v216m125-111h304v116H190z" fill="#eff3f7"/>
+    <path d="M65 199L430 12" stroke-width="6" stroke-linecap="round"/>
+    <path d="M65 199h125m-125 49h125m-125-7v14m125-14v14M110 199q0-11-5-20" stroke="#708096" stroke-width="1.5"/>
+  </g>
+  <g fill="#243c5a" font-family="serif" font-size="22">
+    <circle cx="65" cy="199" r="4"/><circle cx="190" cy="135" r="4"/>
+    <text x="48" y="220">A</text><text x="177" y="121">P</text><text x="119" y="194">θ</text>
+    <text x="124" y="271">d</text><text x="298" y="55">2l</text>
+  </g>
+</svg>

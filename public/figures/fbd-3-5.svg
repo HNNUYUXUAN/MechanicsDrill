@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="560" viewBox="0 0 920 560" role="img" aria-labelledby="title desc">
+<title id="title">粗糙地板和粗糙墙面间梯子的受力分析图</title><desc id="desc">梯子底端 A 受地面支持力和摩擦力，顶端 B 受墙面支持力和摩擦力，梯子和人分别受重力。</desc><rect width="100%" height="100%" fill="#ffffff"/>
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L8,4 L0,8 z" fill="#315369" />
+  </marker>
+  <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L8,4 L0,8 z" fill="#b4232c" />
+  </marker>
+  <style>
+    .line{stroke:#202020;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .thin{stroke:#626262;stroke-width:1.8;fill:none}
+    .dash{stroke:#888;stroke-width:1.8;fill:none;stroke-dasharray:8 7}
+    .force{stroke:#315369;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    .weight{stroke:#b4232c;stroke-width:3;fill:none;marker-end:url(#arrow-red)}
+    .label{font-family:'Times New Roman',serif;font-size:24px;fill:#202020}
+    .small{font-family:'Times New Roman',serif;font-size:20px;fill:#626262}
+    .caption{font-family:SimSun,'Songti SC',serif;font-size:19px;fill:#626262}
+  </style>
+</defs>
+  <line x1="100" y1="465" x2="820" y2="465" class="line"/>
+  <path d="M130 465 l14 18 m22 -18 l14 18 m22 -18 l14 18 m22 -18 l14 18 m22 -18 l14 18" class="thin"/>
+  <line x1="760" y1="70" x2="760" y2="465" class="line"/>
+  <path d="M760 90 l18 14 m-18 25 l18 14 m-18 25 l18 14 m-18 25 l18 14 m-18 25 l18 14 m-18 25 l18 14 m-18 25 l18 14 m-18 25 l18 14" class="thin"/>
+  <line x1="190" y1="465" x2="760" y2="115" class="line"/>
+  <circle cx="190" cy="465" r="5" fill="#202020"/><circle cx="760" cy="115" r="5" fill="#202020"/>
+  <text x="166" y="500" class="label">A</text><text x="777" y="110" class="label">B</text>
+  <line x1="190" y1="465" x2="190" y2="330" class="force"/><text x="205" y="338" class="label">Nₐ</text>
+  <line x1="190" y1="465" x2="320" y2="465" class="force"/><text x="300" y="448" class="label">Fₐ</text>
+  <line x1="760" y1="115" x2="625" y2="115" class="force"/><text x="638" y="96" class="label">Nᵦ</text>
+  <line x1="760" y1="115" x2="760" y2="32" class="force"/><text x="778" y="25" class="label">Fᵦ</text>
+  <line x1="475" y1="290" x2="475" y2="410" class="weight"/><text x="490" y="412" class="label">G</text>
+  <line x1="760" y1="115" x2="760" y2="250" class="weight"/><text x="778" y="252" class="label">3G</text>
+  <path d="M275 465 A85 85 0 0 0 266 421" class="thin"/><text x="286" y="430" class="label">θ</text>
+  <text x="110" y="535" class="small">At A, friction points toward the wall; at B, friction points upward.</text>
+</svg>

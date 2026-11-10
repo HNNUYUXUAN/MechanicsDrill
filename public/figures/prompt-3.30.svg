@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 300" role="img" aria-labelledby="title">
+  <title id="title">碾轮在水平面上滚动，轮心 A 绕竖直轴 OB 运动</title>
+  <g stroke="#243c5a" stroke-width="2.5" fill="none">
+    <path d="M106 213h302l-40 52H64z" fill="#eff3f7"/>
+    <ellipse cx="360" cy="141" rx="33" ry="101" transform="rotate(16 360 141)" fill="#f8f9fb"/>
+    <path d="M151 45v190m0-94h209" stroke-width="4"/>
+    <path d="M151 235h180m29-94-28 97" stroke="#718096" stroke-dasharray="6 5"/>
+    <path d="M117 105c-16-14 25-26 61-15l7 4m-13 2 13-2-6-11" stroke="#526b8c"/>
+  </g>
+  <g fill="#243c5a" font-family="serif" font-size="20">
+    <circle cx="151" cy="141" r="4"/><circle cx="151" cy="235" r="4"/><circle cx="360" cy="141" r="4"/>
+    <circle cx="389" cy="44" r="4"/><circle cx="331" cy="238" r="4"/>
+    <text x="133" y="137">O</text><text x="132" y="254">B</text><text x="369" y="145">A</text>
+    <text x="395" y="49">M</text><text x="336" y="255">P</text>
+    <text x="234" y="132">c</text><text x="132" y="198">b</text><text x="99" y="92">ω</text>
+  </g>
+</svg>

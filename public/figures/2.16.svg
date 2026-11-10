@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="460" viewBox="0 0 960 460">
+<defs>
+ <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#315369"/></marker>
+ <marker id="arrred" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b4232c"/></marker>
+</defs>
+<rect width="960" height="460" fill="#fff"/>
+<g font-family="SimSun, Songti SC, serif" fill="#202020">
+ <circle cx="460" cy="195" r="95" fill="#edf3f6" stroke="#315369" stroke-width="3"/>
+ <path d="M460 195 L545 140" stroke="#315369" stroke-width="2"/>
+ <text x="580" y="190" font-size="24" fill="#315369">r(t)</text>
+ <path d="M460 300 V380" stroke="#315369" stroke-width="5" marker-end="url(#arr)"/>
+ <text x="505" y="350" font-size="24" fill="#315369">v(t)</text>
+ <path d="M680 230 V345" stroke="#777" stroke-width="3" marker-end="url(#arr)"/>
+ <text x="700" y="300" font-size="22" fill="#626262">g</text>
+ <path d="M310 125 Q335 95 370 145" fill="none" stroke="#b4232c" stroke-width="3" marker-end="url(#arrred)"/>
+ <path d="M610 125 Q585 95 550 145" fill="none" stroke="#b4232c" stroke-width="3" marker-end="url(#arrred)"/>
+ <text x="78" y="72" font-size="25">质量持续增加</text>
+ <text x="78" y="112" font-size="19" fill="#626262">dm/dt ∝ 4πr²</text>
+ <text x="78" y="154" font-size="19" fill="#626262">r(t) = a + λt</text>
+ <text x="78" y="430" font-size="17" fill="#626262">模型：忽略空气阻力；新并入的水在地面参考系中初始竖直速度取 0</text>
+</g></svg>

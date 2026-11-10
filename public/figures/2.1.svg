@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="520" viewBox="0 0 840 520">
+<defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#315369" stroke-width="1.4"/></marker></defs>
+<rect width="840" height="520" fill="#fff"/>
+<g stroke="#202020" stroke-width="2" fill="none">
+ <path d="M110 260 H710" marker-end="url(#arr)"/><path d="M260 445 V60" marker-end="url(#arr)"/>
+</g>
+<path d="M260 260 L500 20 A339 339 0 0 1 500 500 Z" fill="#e8eff3" opacity="0.92" transform="translate(0,0)"/>
+<path d="M260 260 L500 20 A339 339 0 0 1 500 500" fill="none" stroke="#315369" stroke-width="3"/>
+<path d="M260 260 L500 20 M260 260 L500 500" stroke="#315369" stroke-width="2.5"/>
+<path d="M335 185 A106 106 0 0 1 335 335" fill="none" stroke="#b4232c" stroke-width="2"/>
+<path d="M260 260 H620" stroke="#777" stroke-width="1.5" stroke-dasharray="7 7"/>
+<circle cx="260" cy="260" r="5" fill="#202020"/>
+<circle cx="392" cy="260" r="6" fill="#b4232c"/>
+<g font-family="Times New Roman,serif" fill="#202020" font-size="28">
+ <text x="238" y="288">O</text><text x="720" y="270">x</text><text x="275" y="54">y</text>
+ <text x="410" y="244" fill="#b4232c">x<tspan baseline-shift="sub" font-size="19">C</tspan></text>
+ <text x="380" y="118">a</text><text x="355" y="224" fill="#b4232c">θ</text>
+ <text x="355" y="315" fill="#b4232c">θ</text>
+</g>
+<text x="510" y="480" font-family="Noto Serif CJK SC,serif" font-size="19" fill="#626262">均匀扇形薄片（示意图，非按比例）</text>
+</svg>

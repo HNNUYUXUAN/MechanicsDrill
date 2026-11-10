@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="500" viewBox="0 0 1100 500">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#315369"/></marker></defs>
+<rect width="1100" height="500" fill="#fff"/>
+<g font-family="SimSun, Songti SC, serif" fill="#202020" stroke-linecap="round" stroke-linejoin="round">
+ <text x="70" y="48" font-size="26" stroke="none">初始状态：一半在桌面，一半下垂</text>
+ <path d="M70 145 H500 V430" stroke="#626262" stroke-width="7" fill="none"/>
+ <path d="M70 130 H500" stroke="#315369" stroke-width="13" fill="none" stroke-dasharray="2 2"/>
+ <path d="M70 130 H500 V390" stroke="#315369" stroke-width="9" fill="none"/>
+ <path d="M70 130 H500" stroke="#315369" stroke-width="9" fill="none"/>
+ <path d="M500 130 V390" stroke="#315369" stroke-width="9" fill="none"/>
+ <path d="M70 95 H500" stroke="#999" stroke-width="1.5" fill="none"/>
+ <path d="M70 88 V102 M500 88 V102" stroke="#999" stroke-width="1.5"/>
+ <text x="255" y="82" font-size="22" stroke="none">l/2</text>
+ <path d="M535 130 V390" stroke="#999" stroke-width="1.5" fill="none"/>
+ <path d="M528 130 H542 M528 390 H542" stroke="#999" stroke-width="1.5"/>
+ <text x="550" y="270" font-size="22" stroke="none">x = l/2</text>
+ <text x="110" y="180" font-size="19" stroke="none" fill="#626262">光滑水平桌面</text>
+ <text x="520" y="420" font-size="19" stroke="none" fill="#626262">桌边</text>
+ <path d="M620 270 H705" stroke="#315369" stroke-width="3" marker-end="url(#arr)" fill="none"/>
+ <text x="635" y="245" font-size="18" stroke="none" fill="#315369">滑动</text>
+ <text x="760" y="48" font-size="26" stroke="none">末端刚到桌边：全链下垂</text>
+ <path d="M875 130 V430" stroke="#626262" stroke-width="7" fill="none"/>
+ <path d="M875 130 V430" stroke="#315369" stroke-width="9" fill="none"/>
+ <path d="M835 130 H915" stroke="#626262" stroke-width="7"/>
+ <path d="M875 95 V430" stroke="#999" stroke-width="1.5" fill="none"/>
+ <path d="M868 95 H882 M868 430 H882" stroke="#999" stroke-width="1.5"/>
+ <text x="895" y="270" font-size="22" stroke="none">l</text>
+ <text x="770" y="465" font-size="18" stroke="none" fill="#626262">全链速度大小均为 v</text>
+</g></svg>

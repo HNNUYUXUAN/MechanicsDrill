@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440">
+<defs>
+  <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#315369"/></marker>
+  <marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b4232c"/></marker>
+</defs>
+<rect width="960" height="440" fill="#fff"/>
+<g font-family="SimSun, Songti SC, serif" fill="#202020">
+  <text x="70" y="54" font-size="26">碰前：B 球静止</text>
+  <circle cx="180" cy="160" r="34" fill="#f4f6f7" stroke="#315369" stroke-width="3"/>
+  <circle cx="390" cy="160" r="34" fill="#f4f6f7" stroke="#315369" stroke-width="3"/>
+  <text x="170" y="169" font-size="24">A</text><text x="380" y="169" font-size="24">B</text>
+  <path d="M218 160 H315" stroke="#315369" stroke-width="4" marker-end="url(#arr)"/>
+  <text x="250" y="142" font-size="23" fill="#315369">u</text>
+  <text x="95" y="232" font-size="18" fill="#626262">初速度方向</text>
+  <path d="M500 65 V365" stroke="#dedede" stroke-width="2" stroke-dasharray="7 8"/>
+  <text x="555" y="54" font-size="26">碰后：动量矢量相加</text>
+  <circle cx="700" cy="220" r="5" fill="#202020"/>
+  <path d="M700 220 L865 125" stroke="#315369" stroke-width="5" marker-end="url(#arr)"/>
+  <path d="M700 220 L755 315" stroke="#b4232c" stroke-width="5" marker-end="url(#arr2)"/>
+  <text x="823" y="112" font-size="23" fill="#315369">v_A</text>
+  <text x="765" y="337" font-size="23" fill="#b4232c">v_B</text>
+  <path d="M735 200 A40 40 0 0 1 720 255" fill="none" stroke="#777" stroke-width="2"/>
+  <text x="740" y="226" font-size="22">90°</text>
+  <text x="555" y="385" font-size="18" fill="#626262">示意图：两球碰后速度方向互相垂直（不按比例）</text>
+</g></svg>

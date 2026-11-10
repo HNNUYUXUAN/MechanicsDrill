@@ -1,0 +1,427 @@
+{
+  "bankVersion": 1,
+  "categories": [
+    {
+      "id": "2",
+      "name": "质点系力学"
+    },
+    {
+      "id": "3",
+      "name": "刚体力学"
+    }
+  ],
+  "rules": "## 考试书写规范\n\n1. **已知与求**：交代研究对象、参考系、坐标正方向、约束和待求量。\n2. **解**：先画受力图或建立运动关系，再写所用定律与分量方程。向量写作 $\\vec F$、$\\vec v$、$\\vec a$ 或 $\\vec\\omega$，单位向量写作 $\\vec e_x$；向量下标跟在箭头外，如 $\\vec v_A$。\n3. **推导**：说明守恒或平衡条件。点积写 $\\vec A\\cdot\\vec B$，叉积写 $\\vec A\\times\\vec B$。分量 $v_x$、大小 $v$、转动惯量 $I$ 等标量无箭头。\n4. **答**：集中写出结果，注明方向、单位或适用条件。\n5. **自查**：比较等价表达式、极限和量纲。输入速刷只匹配指定关键结果，完整推导请用阅卷要点自评。",
+  "questions": [
+    {
+      "id": "2.1",
+      "title": "扇形薄片的质心",
+      "prompt": "一片均匀薄片呈圆扇形，半径为 $a$，张角为 $2\\theta$。求质心位置，并讨论 $\\theta=\\pi/2$ 时的结果。",
+      "tags": [
+        "质心",
+        "积分"
+      ],
+      "check": "求半圆片质心与圆心的距离。使用 `a` 和 `pi`，写出表达式。",
+      "expected": "4*a/(3*pi)",
+      "result": "$x_C=\\dfrac{2a\\sin\\theta}{3\\theta},\\ y_C=0$。半圆片有 $x_C=\\dfrac{4a}{3\\pi}$。",
+      "judgment": {
+        "correct": "$\\mathrm dm=\\sigma r\\,\\mathrm dr\\,\\mathrm d\\varphi$。",
+        "incorrect": "$\\mathrm dm=\\sigma\\,\\mathrm dr\\,\\mathrm d\\varphi$。",
+        "reason": "极坐标面积元的雅可比因子为 $r$。"
+      },
+      "categoryId": "2",
+      "figure": "",
+      "source": {
+        "section": "第 2 章 · 质点系力学",
+        "page": "第二章习题",
+        "identity": "e3f651cedca9c6b5b220d2b100a3750738977790e87bc0daf3775fbc9b79e0b9"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知与求\n\n一片均匀薄片呈圆扇形，半径为 $a$，张角为 $2\\theta$。求质心位置，并讨论 $\\theta=\\pi/2$ 时的结果。\n\n![均匀扇形薄片的质心示意图](./figures/2.1.svg)\n\n## 解\n\n### （1）取坐标系并利用对称性\n\n以扇形圆心 $O$ 为原点，以扇形对称轴为 $x$ 轴。由关于 $x$ 轴的对称性，质心必在对称轴上，因此 $y_C=0$。\n\n### （2）建立极坐标微元\n\n令极径为 $r$，极角为 $\\varphi$，则 $0\\le r\\le a$、$-\\theta\\le\\varphi\\le\\theta$。设均匀面密度为 $\\sigma$，面积元与质量元分别为 $\\mathrm dA=r\\,\\mathrm dr\\,\\mathrm d\\varphi$、$\\mathrm dm=\\sigma r\\,\\mathrm dr\\,\\mathrm d\\varphi$。\n\n### （3）计算总质量\n\n扇形总质量为 $M=\\int\\mathrm dm=\\sigma\\int_{-\\theta}^{\\theta}\\int_0^a r\\,\\mathrm dr\\,\\mathrm d\\varphi=\\sigma a^2\\theta$。\n\n### （4）计算质心坐标\n\n由质心定义，$x_C=\\dfrac{1}{M}\\int x\\,\\mathrm dm$。在极坐标中 $x=r\\cos\\varphi$，故 $x_C=\\dfrac{\\sigma}{M}\\int_{-\\theta}^{\\theta}\\int_0^a r^2\\cos\\varphi\\,\\mathrm dr\\,\\mathrm d\\varphi=\\dfrac{\\sigma}{M}\\cdot\\dfrac{a^3}{3}\\cdot2\\sin\\theta=\\dfrac{2a\\sin\\theta}{3\\theta}$。\n\n### （5）验证半圆片\n\n半圆片对应 $2\\theta=\\pi$，即 $\\theta=\\pi/2$。代入得 $x_C=\\dfrac{2a}{3(\\pi/2)}=\\dfrac{4a}{3\\pi}$，证毕。\n\n## 答\n\n$y_C=0,\\quad x_C=\\dfrac{2a\\sin\\theta}{3\\theta}$。当 $\\theta=\\dfrac{\\pi}{2}$ 时，$x_C=\\dfrac{4a}{3\\pi}$。\n\n## 阅卷要点\n\n- 对称性判断，得出 $y_C=0$（1分）\n- 正确建立极坐标范围和质量元（2分）\n- 正确计算扇形总质量 $M=\\sigma a^2\\theta$（2分）\n- 按质心定义建立并计算 $x_C$ 积分（3分）\n- 代入半圆条件，证明 $4a/(3\\pi)$（2分）\n\n## 易错点\n\n- 把圆心角 $2\\theta$ 误写为 $\\theta$，导致总面积少一半。\n- 忘记面积元中的极坐标雅可比因子 $r$。\n- 只写出对称性结论，没有完成质心积分。\n- 半圆条件应为 $\\theta=\\pi/2$，不是 $\\theta=\\pi$。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "2.3",
+      "title": "起跳最高点向后抛物",
+      "prompt": "一名重为 $G$ 的人拿着重为 $G_1$ 的物体，以速率 $v_0$ 沿与水平面成 $\\alpha$ 的方向起跳。在最高点，他将物体以相对自己为 $u$ 的速率水平向后抛出。忽略空气阻力，落地与起跳同高。求跳远距离的增量。",
+      "tags": [
+        "动量守恒",
+        "相对速度"
+      ],
+      "check": "写出水平速度增量 $\\Delta v_x$，使用 `G`、`G1`、`u`。",
+      "expected": "G1*u/(G+G1)",
+      "result": "$\\Delta s=\\dfrac{G_1}{G+G_1}\\,\\dfrac{u v_0\\sin\\alpha}{g}$。",
+      "judgment": {
+        "correct": "若人抛出后的对地水平速度为 $v$，物体的对地水平速度为 $v-u$。",
+        "incorrect": "物体抛出后的对地水平速度为 $-u$。",
+        "reason": "$u$ 是相对人的速率，换算到地面系须加上人的水平速度。"
+      },
+      "categoryId": "2",
+      "figure": "",
+      "source": {
+        "section": "第 2 章 · 质点系力学",
+        "page": "第二章习题",
+        "identity": "c0d98547828028447cb6e9ed1d341a607609b5d29333a6f0650e82da9810b085"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知与求\n\n一名重为 $G$ 的人拿着重为 $G_1$ 的物体，以速率 $v_0$ 沿与水平面成 $\\alpha$ 的方向起跳。在最高点，他将物体以相对自己为 $u$ 的速率水平向后抛出。忽略空气阻力，落地与起跳同高。求跳远距离的增量。\n\n![跳跃最高点抛出物体后的距离增量示意图](./figures/2.3.svg)\n\n## 解\n\n### （1）明确研究过程与质量\n\n研究物体被抛出的瞬间。设人的质量为 $m=G/g$，手中物体的质量为 $m_1=G_1/g$。抛出过程极短，忽略外界水平冲量，因此人和物体组成的系统在水平方向动量守恒。\n\n### （2）列抛出前后的水平动量守恒式\n\n到达最高点时，竖直速度为零，水平方向速度仍为 $v_0\\cos\\alpha$。设抛出后人的水平速度为 $v$。物体相对人向后速度为 $u$，故物体对地的水平速度为 $v-u$。于是 $(m+m_1)v_0\\cos\\alpha=mv+m_1(v-u)$。\n\n### （3）求人的水平速度增量\n\n整理动量守恒式，得 $v-v_0\\cos\\alpha=\\dfrac{m_1}{m+m_1}u=\\dfrac{G_1}{G+G_1}u$。因此，抛出物体使人的水平速度增加 $\\Delta v_x=\\dfrac{G_1}{G+G_1}u$。\n\n### （4）计算最高点后的下落时间\n\n抛出方向水平，人的竖直速度不发生突变，仍为零。人从最高点落回起跳高度的时间等于上升时间，即 $t=\\dfrac{v_0\\sin\\alpha}{g}$。\n\n### （5）求跳跃距离的增加量\n\n增加的水平距离等于水平速度增量乘以下落时间：$\\Delta s=\\Delta v_x t=\\dfrac{G_1}{G+G_1}u\\cdot\\dfrac{v_0\\sin\\alpha}{g}$。\n\n## 答\n\n$\\boxed{\\Delta s=\\dfrac{G_1}{G+G_1}\\,\\dfrac{u v_0\\sin\\alpha}{g}}$。\n\n## 阅卷要点\n\n- 将重力换算为质量，明确研究对象和抛出瞬间（1分）\n- 正确写出水平动量守恒式，并处理相对速度（3分）\n- 正确求出人的水平速度增量（3分）\n- 正确确定最高点到落地的时间（2分）\n- 得到距离增加量并写出最终结果（1分）\n\n## 易错点\n\n- 把重力 $G,G_1$ 直接当作质量使用，漏掉换算关系；虽然质量比中 $g$ 会约去，但推导中仍应说明。\n- 把物体对地速度误写成 $v+u$，忽略“向后”这一方向。\n- 在最高点误认为水平速度为零；最高点只有竖直分速度为零。\n- 把完整飞行时间误当作最高点后的剩余时间。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "2.5",
+      "title": "薄圆片绕中心轴的动量矩",
+      "prompt": "半径为 $a$、质量为 $m$ 的均匀薄圆片绕过圆心并垂直片面的固定轴以角速度大小 $\\omega$ 匀速转动。求动量矩的大小与方向。",
+      "tags": [
+        "角动量",
+        "转动惯量",
+        "积分"
+      ],
+      "check": "写出轴向转动惯量 $I$，使用 `m`、`a` 和 `^`。",
+      "expected": "m*a^2/2",
+      "result": "$\\vec J=\\tfrac12 ma^2\\vec\\omega$。",
+      "judgment": {
+        "correct": "积分时有 $\\mathrm dm=2\\pi\\sigma r\\,\\mathrm dr$。",
+        "incorrect": "所有质量元都可按距轴 $a$ 处理，故 $I=ma^2$。",
+        "reason": "圆片各质量元的距离 $r$ 从 $0$ 到 $a$，须使用 $I=\\int r^2\\,\\mathrm dm$。"
+      },
+      "categoryId": "2",
+      "figure": "",
+      "source": {
+        "section": "第 2 章 · 质点系力学",
+        "page": "第二章习题",
+        "identity": "927811dee8a4261a88230d24d4121d7cf8d3b869abf37c3ecde4e1302765a0d1"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知与求\n\n半径为 $a$、质量为 $m$ 的均匀薄圆片绕过圆心并垂直片面的固定轴以角速度大小 $\\omega$ 匀速转动。求动量矩的大小与方向。\n\n![均匀薄圆片绕中心垂直轴的动量矩示意图](./figures/2.5.svg)\n\n## 解\n\n### （1）写出绕定轴的角动量表达式\n\n对刚体绕固定轴转动，绕该轴的动量矩为 $J=\\int r v_\\theta\\,\\mathrm dm$。由于 $v_\\theta=\\omega r$，故 $J=\\omega\\int r^2\\,\\mathrm dm=I\\omega$。\n\n### （2）建立面密度和环形质量元\n\n圆片面密度为 $\\sigma=\\dfrac{m}{\\pi a^2}$。取半径为 $r$、宽度为 $\\mathrm dr$ 的微小同心圆环，则 $\\mathrm dm=\\sigma\\,2\\pi r\\,\\mathrm dr$。\n\n### （3）计算转动惯量\n\n$I=\\int_0^a r^2\\,\\mathrm dm=2\\pi\\sigma\\int_0^a r^3\\,\\mathrm dr=2\\pi\\sigma\\cdot\\dfrac{a^4}{4}=\\dfrac{\\pi\\sigma a^4}{2}=\\dfrac12 ma^2$。\n\n### （4）求动量矩\n\n代入 $J=I\\omega$，得到 $J=\\dfrac12 ma^2\\omega$。动量矩矢量沿转轴方向，具体正负由角速度矢量方向决定。\n\n## 答\n\n$\\vec J=\\tfrac12 ma^2\\vec\\omega$。 动量矩与角速度同向。\n\n## 阅卷要点\n\n- 正确使用角动量定义，写出 $J=I\\omega$（2分）\n- 正确写出均匀面密度及环形质量元（2分）\n- 正确建立并计算转动惯量积分（4分）\n- 得到动量矩大小及方向（2分）\n\n## 易错点\n\n- 误用实心球或细圆环的转动惯量公式。\n- 环形质量元漏掉周长因子 $2\\pi r$。\n- 积分时将 $r^2$ 与质量元中的 $r$ 相乘后幂次写错。\n- 只求出转动惯量 $I$，没有再乘角速度 $\\omega$。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "2.8",
+      "title": "等质量小球的弹性斜碰",
+      "prompt": "两光滑球质量相同。一球以非零速度撞向初始静止的另一球，碰撞完全弹性。两球碰后均运动时，证明它们的速度方向相互垂直。",
+      "tags": [
+        "动量守恒",
+        "动能守恒",
+        "点积"
+      ],
+      "check": "写出碰后速度点积 $\\vec v_A\\cdot\\vec v_B$ 的值。",
+      "expected": "0",
+      "result": "$\\vec v_A\\cdot\\vec v_B=0$，故 $\\vec v_A\\perp\\vec v_B$。",
+      "judgment": {
+        "correct": "动量关系平方后有 $u^2=v_A^2+v_B^2+2\\vec v_A\\cdot\\vec v_B$。",
+        "incorrect": "将动量矢量关系平方，无条件得到 $u^2=v_A^2+v_B^2$。",
+        "reason": "对向量和取模平方时须保留点积交叉项，再与动能守恒式比较。"
+      },
+      "categoryId": "2",
+      "figure": "",
+      "source": {
+        "section": "第 2 章 · 质点系力学",
+        "page": "第 114 页",
+        "identity": "5284274880863daf0f820523139ddc07eb72bd0c2747789d9195acdbd16e6902"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知与求\n\n两光滑球质量相同。一球以非零速度撞向初始静止的另一球，碰撞完全弹性。两球碰后均运动时，证明它们的速度方向相互垂直。\n\n![等质量球斜碰速度矢量示意图](./figures/2.8.svg)\n\n## 解\n\n设两球质量均为 $m$，A 球碰撞前速度矢量为 $\\vec{u}$，碰撞后 A、B 两球速度矢量分别为 $\\vec{v}_A$、$\\vec{v}_B$。B 球碰前静止。以下用 $u,v_A,v_B$ 表示对应速度的大小。\n\n**（1）由动量守恒定律**\n\n碰撞过程中系统所受外力冲量可忽略，故\n\n$$\nm\\vec{u}=m\\vec{v}_A+m\\vec{v}_B,\n$$\n\n即\n\n$$\n\\vec{u}=\\vec{v}_A+\\vec{v}_B. \\tag{1}\n$$\n\n**（2）由机械能守恒定律**\n\n两球发生完全弹性碰撞，碰撞前后总动能相等：\n\n$$\n\\frac12mu^2=\\frac12mv_A^2+\\frac12mv_B^2,\n$$\n\n所以\n\n$$\nu^2=v_A^2+v_B^2. \\tag{2}\n$$\n\n**（3）比较两式**\n\n将式（1）两边作矢量点积，得\n\n$$\nu^2=\\lvert\\vec{v}_A+\\vec{v}_B\\rvert^2\n =v_A^2+v_B^2+2\\vec{v}_A\\cdot\\vec{v}_B. \\tag{3}\n$$\n\n由式（2）、（3）相比较，得到\n\n$$\n\\vec{v}_A\\cdot\\vec{v}_B=0.\n$$\n\n因此，在两球碰后速度均非零的斜碰情形下，\n\n$$\n\\boxed{\\vec{v}_A\\perp\\vec{v}_B}.\n$$\n\n**证毕。**\n\n## 答\n\n$\\vec v_A\\cdot\\vec v_B=0$，故 $\\vec v_A\\perp\\vec v_B$。\n\n## 阅卷要点\n\n1. 正确写出碰撞前后系统的动量守恒关系，并利用 B 球初始静止、两球质量相等化简。\n2. 正确使用完全弹性碰撞的动能守恒条件。\n3. 对动量矢量关系平方，保留交叉项 $2\\vec{v}_A\\cdot\\vec{v}_B$。\n4. 比较两式得点积为零，并据此说明两速度方向垂直。\n\n## 易错提醒\n\n- 动量守恒式是**矢量式**，不能把速度大小直接作普通代数相加。\n- 完全弹性碰撞对应动能守恒；仅写动量守恒不足以证明垂直关系。\n- 结论是两速度矢量点积为零，而不是两球速度大小相等。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "2.13",
+      "title": "细链从光滑桌边滑落",
+      "prompt": "一根长为 $l$ 的均匀细链跨过光滑桌边，桌面上的一段与边缘垂直，初始下垂段长 $l/2$。细链从静止释放。用两种方法求链尾刚到桌边的速率。",
+      "tags": [
+        "牛顿第二定律",
+        "机械能守恒"
+      ],
+      "check": "写出链尾到桌边时的 $v^2$，使用 `g` 和 `l`。",
+      "expected": "3*g*l/4",
+      "result": "$v=\\dfrac12\\sqrt{3gl}$。",
+      "judgment": {
+        "correct": "下垂长度为 $x$ 时，沿链切向的总驱动力为 $\\mu gx$，参与运动的总质量为 $\\mu l$。",
+        "incorrect": "下垂长度为 $x$ 时，链条的加速度恒为 $g$。",
+        "reason": "整条链均参与运动，只有下垂段的重力驱动，故 $a=gx/l$。"
+      },
+      "categoryId": "2",
+      "figure": "",
+      "source": {
+        "section": "第 2 章 · 质点系力学",
+        "page": "第 114 页",
+        "identity": "2390b6af53d6ce5dc8cd45c138f3413f6377abbfccd7edb5d8c749f5ae51e0bf"
+      },
+      "variants": [
+        {
+          "id": "primary",
+          "solution": "## 已知与求\n\n一根长为 $l$ 的均匀细链跨过光滑桌边，桌面上的一段与边缘垂直，初始下垂段长 $l/2$。细链从静止释放。用两种方法求链尾刚到桌边的速率。\n\n![细链初始状态与末端刚到桌边时的示意图](./figures/2.13.svg)\n\n## 解\n\n设链条线密度为 $\\mu$，总质量为 $M=\\mu l$。取链条下垂长度为广义坐标 $x$，则初始时 $x_0=l/2$，当链条末端刚滑到桌边时 $x_1=l$。设链条各处速率大小为 $v=\\dot x$。桌面及桌边均光滑，忽略空气阻力。\n### 沿链切向列动力学方程\n\n取链条从桌面上的自由端到下垂自由端的弧长坐标 $s$，正向与链条瞬时运动方向一致；张力为 $T(s)$，沿链条运动方向的切向加速度大小为 $a=dv/dt$。对长度为 $ds$ 的微元，沿切线方向列牛顿第二定律：\n\n$$\n\\frac{dT}{ds}+\\mu g_\\tau=\\mu a,\n$$\n\n其中 $g_\\tau$ 是重力加速度在链条切线方向上的分量。光滑桌面及桌边的约束力沿接触法线方向，在切线方向无分量。对整条链积分：\n\n$$\nT(l)-T(0)+\\mu\\int_0^l g_\\tau\\,ds=\\mu la.\n$$\n\n链条两端均为自由端，故 $T(0)=T(l)=0$。桌面上的水平部分重力沿链方向的分量为零；下垂部分长度为 $x$，重力沿链方向，故\n\n$$\n\\int_0^l g_\\tau\\,ds=gx.\n$$\n\n于是\n\n$$\n\\mu gx=\\mu la,\\qquad a=\\frac{gx}{l}. \\tag{1}\n$$\n\n又因为 $a=dv/dt=v\\,dv/dx$，将式（1）分离变量并积分：\n\n$$\nv\\,dv=\\frac{g}{l}x\\,dx,\n$$\n\n$$\n\\int_0^v v\\,dv=\\frac{g}{l}\\int_{l/2}^{l}x\\,dx.\n$$\n\n因此\n\n$$\n\\frac{v^2}{2}=\\frac{g}{2l}\\left(l^2-\\frac{l^2}{4}\\right)\n =\\frac{3gl}{8},\n$$\n\n得到\n\n$$\n\\boxed{v=\\frac12\\sqrt{3gl}}. \\tag{2}\n$$\n\n## 答\n\n$v=\\dfrac12\\sqrt{3gl}$。\n\n## 阅卷要点\n\n1. 明确线密度 $\\mu$、总质量 $\\mu l$ 及下垂长度的初末值 $l/2$、$l$。\n2. 牛顿方法中说明桌面和桌边光滑、约束力无切向分量；沿链条切向积分时两端张力为零。\n3. 能量方法中计算的是**整条链**的动能，不能只取下垂部分质量。\n4. 势能只需计算下垂部分，并正确处理初、末态势能差。\n5. 最终结果应为 $v=\\frac12\\sqrt{3gl}$，量纲为速度。\n\n## 易错提醒\n\n- 链条总质量始终为 $\\mu l$，不是 $\\mu x$；$\\mu x$ 只是下垂部分的质量。\n- 链条各处速率大小相同，因此总动能为 $\\frac12\\mu l v^2$。\n- 不能把桌面支持力误计为沿链条运动方向的驱动力。",
+          "revision": 1
+        },
+        {
+          "id": "alternate",
+          "solution": "## 已知与求\n\n一根长为 $l$ 的均匀细链跨过光滑桌边，桌面上的一段与边缘垂直，初始下垂段长 $l/2$。细链从静止释放。用两种方法求链尾刚到桌边的速率。\n\n![细链初始状态与末端刚到桌边时的示意图](./figures/2.13.svg)\n\n## 解\n\n设链条线密度为 $\\mu$，总质量为 $M=\\mu l$。取链条下垂长度为广义坐标 $x$，则初始时 $x_0=l/2$，当链条末端刚滑到桌边时 $x_1=l$。设链条各处速率大小为 $v=\\dot x$。桌面及桌边均光滑，忽略空气阻力。\n### 机械能守恒\n\n取桌面为重力势能零势面。链条下垂长度为 $x$ 时，下垂部分的重力势能为\n\n$$\nU(x)=\\mu g\\int_0^x(-y)\\,dy=-\\frac12\\mu gx^2.\n$$\n\n初始时 $x_0=l/2$，链条静止，故\n\n$$\nE_0=U(l/2)=-\\frac18\\mu gl^2.\n$$\n\n末端刚到桌边时 $x_1=l$，整条链的速率大小均为 $v$，总动能为\n\n$$\nK_1=\\frac12\\mu l v^2,\n$$\n\n重力势能为\n\n$$\nU_1=U(l)=-\\frac12\\mu gl^2.\n$$\n\n桌面支持力和光滑桌边的约束力均不做功，系统机械能守恒：\n\n$$\nK_1+U_1=E_0.\n$$\n\n代入得\n\n$$\n\\frac12\\mu l v^2-\\frac12\\mu gl^2=-\\frac18\\mu gl^2,\n$$\n\n整理得\n\n$$\n\\frac12\\mu l v^2=\\frac38\\mu gl^2,\n \\qquad \\boxed{v=\\frac12\\sqrt{3gl}}.\n$$\n\n## 答\n\n$v=\\dfrac12\\sqrt{3gl}$。\n\n## 阅卷要点\n\n1. 明确线密度 $\\mu$、总质量 $\\mu l$ 及下垂长度的初末值 $l/2$、$l$。\n2. 牛顿方法中说明桌面和桌边光滑、约束力无切向分量；沿链条切向积分时两端张力为零。\n3. 能量方法中计算的是**整条链**的动能，不能只取下垂部分质量。\n4. 势能只需计算下垂部分，并正确处理初、末态势能差。\n5. 最终结果应为 $v=\\frac12\\sqrt{3gl}$，量纲为速度。\n\n## 易错提醒\n\n- 链条总质量始终为 $\\mu l$，不是 $\\mu x$；$\\mu x$ 只是下垂部分的质量。\n- 链条各处速率大小相同，因此总动能为 $\\frac12\\mu l v^2$。\n- 不能把桌面支持力误计为沿链条运动方向的驱动力。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "2.16",
+      "title": "雨滴的变质量下落",
+      "prompt": "球形雨滴的密度恒定，吸收水分的质量速率与其表面积成正比。设雨滴由静止释放、初始半径为 $a$，并入的水分对地竖直速度为零。忽略空气阻力，求速度随时间的变化。",
+      "tags": [
+        "变质量系统",
+        "微分方程"
+      ],
+      "check": "积分因子为 $(a+\\lambda t)^n$，其中 $\\lambda=\\mathrm dr/\\mathrm dt$。写出指数 $n$。",
+      "expected": "3",
+      "result": "$v(t)=\\dfrac{g}{4\\lambda}\\left[a+\\lambda t-\\dfrac{a^4}{(a+\\lambda t)^3}\\right]$，方向向下。",
+      "judgment": {
+        "correct": "并入水对地静止，竖直动量方程为 $\\dfrac{\\mathrm d(mv)}{\\mathrm dt}=mg$。",
+        "incorrect": "雨滴始终满足 $m\\dfrac{\\mathrm dv}{\\mathrm dt}=mg$。",
+        "reason": "新增水从对地静止变为与雨滴同速，展开动量方程时保留 $v\\,\\mathrm dm/\\mathrm dt$。"
+      },
+      "categoryId": "2",
+      "figure": "",
+      "source": {
+        "section": "第 2 章 · 质点系力学",
+        "page": "第 115 页",
+        "identity": "081bb8ac7d848e3fce61f042e65518806c785f819852083f6d767f54073e3df7"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知与求\n\n球形雨滴的密度恒定，吸收水分的质量速率与其表面积成正比。设雨滴由静止释放、初始半径为 $a$，并入的水分对地竖直速度为零。忽略空气阻力，求速度随时间的变化。\n\n![雨滴半径增长及下落速度示意图](./figures/2.16.svg)\n\n## 解\n\n设雨滴始终为密度 $\\rho$ 不变的球形，半径为 $r(t)$，质量为 $m(t)$，取竖直向下为正方向。忽略空气阻力，并按教材采用的变质量模型，取新并入雨滴的水在地面惯性系中的初始竖直速度为零。设 $t=0$ 时雨滴由静止开始下落，初始半径为 $a$。\n\n**（1）由质量增长规律求半径随时间的变化**\n\n题设给出质量增加率与表面积成正比，设比例常数为 $k$，则\n\n$$\n\\frac{dm}{dt}=k\\,4\\pi r^2. \\tag{1}\n$$\n\n另一方面，雨滴质量为\n\n$$\nm=\\frac43\\pi\\rho r^3,\n$$\n\n对时间求导：\n\n$$\n\\frac{dm}{dt}=4\\pi\\rho r^2\\frac{dr}{dt}. \\tag{2}\n$$\n\n比较式（1）、（2），得\n\n$$\n\\frac{dr}{dt}=\\frac{k}{\\rho}\\equiv\\lambda,\n$$\n\n其中 $\\lambda$ 为单位时间内雨滴半径的增加量。由初始条件 $r(0)=a$，积分得\n\n$$\nr(t)=a+\\lambda t. \\tag{3}\n$$\n\n**（2）建立变质量运动方程**\n\n由于新并入的水在地面惯性系中初始竖直速度为零，系统的动量方程为\n\n$$\n\\frac{d(mv)}{dt}=mg.\n$$\n\n展开并整理：\n\n$$\nm\\frac{dv}{dt}+v\\frac{dm}{dt}=mg,\n$$\n\n$$\n\\frac{dv}{dt}+\\frac{1}{m}\\frac{dm}{dt}v=g. \\tag{4}\n$$\n\n由 $m\\propto r^3$ 及式（3），有\n\n$$\n\\frac{1}{m}\\frac{dm}{dt}=3\\frac{1}{r}\\frac{dr}{dt}\n =\\frac{3\\lambda}{a+\\lambda t}.\n$$\n\n代入式（4）：\n\n$$\n\\frac{dv}{dt}+\\frac{3\\lambda}{a+\\lambda t}v=g. \\tag{5}\n$$\n\n**（3）求解微分方程**\n\n式（5）是一阶线性微分方程，其积分因子为\n\n$$\n\\mu(t)=\\exp\\!\\left(\\int\\frac{3\\lambda}{a+\\lambda t}\\,dt\\right)\n =(a+\\lambda t)^3.\n$$\n\n方程两边乘以积分因子，得\n\n$$\n\\frac{d}{dt}\\left[(a+\\lambda t)^3v\\right]\n =g(a+\\lambda t)^3.\n$$\n\n利用初始条件 $v(0)=0$，从 $0$ 到 $t$ 积分：\n\n$$\n(a+\\lambda t)^3v\n =g\\int_0^t(a+\\lambda\\tau)^3\\,d\\tau\n =\\frac{g}{4\\lambda}\\left[(a+\\lambda t)^4-a^4\\right].\n$$\n\n因此，雨滴速度与时间的关系为\n\n$$\n\\boxed{v(t)=\\frac{g}{4\\lambda}\\left[a+\\lambda t-\\frac{a^4}{(a+\\lambda t)^3}\\right]}.\n$$\n\n式中 $\\lambda$ 为单位时间内雨滴半径的增加量，$a$ 为 $t=0$ 时雨滴的半径；速度方向竖直向下。\n\n## 答\n\n$v(t)=\\dfrac{g}{4\\lambda}\\left[a+\\lambda t-\\dfrac{a^4}{(a+\\lambda t)^3}\\right]$，方向向下。\n\n## 阅卷要点\n\n1. 由球形质量公式 $m=\\frac43\\pi\\rho r^3$ 对时间求导，推出半径匀速增长 $r=a+\\lambda t$。\n2. 正确写出变质量动量方程，并交代新并入质量的初始速度条件。\n3. 将 $m'/m$ 化为 $3\\lambda/(a+\\lambda t)$，得到一阶线性微分方程。\n4. 正确写出积分因子 $(a+\\lambda t)^3$，并使用 $v(0)=0$ 确定积分常数。\n5. 最终表达式与教材给出的结果一致。\n\n## 易错提醒\n\n- 不能直接写成 $m\\,dv/dt=mg$：雨滴质量随时间增加，必须处理动量流入项。\n- $\\lambda$ 的量纲是长度/时间，表示半径增长率，不是质量增长率。\n- 本题的教材结果采用 $v(0)=0$；若给定非零初速度 $v_0$，解中还应增加 $v_0a^3/(a+\\lambda t)^3$ 项。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "3.1",
+      "title": "半球形碗中的均质棒",
+      "prompt": "一根均质棒斜放在半径为 $r$ 的光滑半球碗中，与内壁和碗缘分别接触。碗水平固定，棒伸入碗内的长度为 $c$，另一端伸出碗缘。求棒长 $L$ 与 $r,c$ 的关系。",
+      "tags": [
+        "受力分析",
+        "力矩平衡"
+      ],
+      "check": "写出棒长 $L$，使用 `c`、`r` 和 `^`。",
+      "expected": "4*(c^2-2*r^2)/c",
+      "result": "$L=\\dfrac{4(c^2-2r^2)}c$。",
+      "judgment": {
+        "correct": "碗缘对棒的光滑约束力与棒垂直。",
+        "incorrect": "碗缘对棒的光滑约束力沿棒轴线。",
+        "reason": "光滑接触力沿接触法向，碗缘支承在棒身处，反力垂直于棒身。"
+      },
+      "categoryId": "3",
+      "figure": "",
+      "source": {
+        "section": "第 3 章 · 刚体力学",
+        "page": "第 176 页",
+        "identity": "7f767226b73bab029382b8cd42929753ee18ca0e35b3d1cb98250961e8508513"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知\n\n半球形碗半径为 $r$，均质棒全长为 $L$，棒在碗内的长度为 $c$。设棒与水平面的夹角为 $\\theta$，棒重为 $G$。碗内壁光滑，碗缘与棒的接触亦按光滑接触处理。\n\n## 求\n\n证明\n\n$$\nL=\\frac{4(c^2-2r^2)}{c}.\n$$\n\n## 解\n\n**（1）受力分析与几何关系**\n\n设 $P$ 为棒与碗内球面的接触点，$Q$ 为棒与碗缘的接触点。内壁支持力 $N_1$ 沿接触点处球面的法线，即沿半径指向球心；碗缘对棒的支持力 $N_2$ 垂直于棒；重力 $G$ 作用于棒的中点。由弦与半径的几何关系，内壁法线与水平正方向的夹角为 $2\\theta$，故其分量分别为 $N_1\\cos2\\theta$ 和 $N_1\\sin2\\theta$。\n\n![第 3.1 题受力分析示意图](./figures/fbd-3-1.svg)\n\n棒在碗内的部分 $PQ=c$ 是球截面中的弦。由弦长与圆心到弦的距离关系，\n\n$$\n\\boxed{c=2r\\cos\\theta},\\qquad \\cos\\theta=\\frac{c}{2r}.\n\\tag{1}\n$$\n\n**（2）列平衡方程**\n\n取水平向右、竖直向上为正方向。由图中支持力方向，沿 $x$、$y$ 轴分别有\n\n$$\n\\sum F_x=0:\\quad N_1\\cos 2\\theta-N_2\\sin\\theta=0,\n\\tag{2}\n$$\n\n$$\n\\sum F_y=0:\\quad N_1\\sin 2\\theta+N_2\\cos\\theta-G=0.\n\\tag{3}\n$$\n\n对点 $P$ 取矩，$N_1$ 的力矩为零，$N_2$ 的力臂为 $c$，重力的力臂为 $\\frac L2\\cos\\theta$，故\n\n$$\n\\sum M_P=0:\\quad N_2c-G\\frac L2\\cos\\theta=0.\n\\tag{4}\n$$\n\n**（3）求解**\n\n由式（2）得\n\n$$\nN_1=\\frac{N_2\\sin\\theta}{\\cos 2\\theta}.\n$$\n\n代入式（3），并利用\n\n$$\n\\sin\\theta\\sin2\\theta+\\cos\\theta\\cos2\\theta\n=\\cos(2\\theta-\\theta)=\\cos\\theta,\n$$\n\n可得\n\n$$\nN_2\\frac{\\cos\\theta}{\\cos2\\theta}=G,\n\\qquad\nN_2=\\frac{G\\cos2\\theta}{\\cos\\theta}.\n\\tag{5}\n$$\n\n将式（5）代入式（4），得到\n\n$$\nL=\\frac{2c\\cos2\\theta}{\\cos^2\\theta}\n=\\frac{2c(2\\cos^2\\theta-1)}{\\cos^2\\theta}.\n\\tag{6}\n$$\n\n再将式（1）代入式（6）：\n\n$$\n\\begin{aligned}\nL&=\\frac{2c\\left(2\\frac{c^2}{4r^2}-1\\right)}{\\frac{c^2}{4r^2}}\\\\\n&=\\frac{4c^2-8r^2}{c}\n=\\frac{4(c^2-2r^2)}{c}.\n\\end{aligned}\n$$\n\n## 答\n\n$$\n\\boxed{L=\\frac{4(c^2-2r^2)}{c}}.\n$$\n\n证毕。\n\n## 阅卷要点\n\n1. 正确标出内壁法向力、碗缘支持力和重力的方向。\n2. 写出弦长关系 $c=2r\\cos\\theta$。\n3. 正确列出两个方向的平衡方程。\n4. 对内壁接触点取矩，得到力矩方程。\n5. 消去支持力并代入几何关系，得到目标式。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "3.2",
+      "title": "抵墙并倚棱角的均质棒",
+      "prompt": "长 $2l$ 的均质棒一端抵住竖直光滑墙，棒身由另一侧的光滑棱角支撑。墙与棱角的水平间距为 $d$，棱角到墙端的棒长不超过 $l$。求棒在平衡时与水平线的夹角 $\\theta$。",
+      "tags": [
+        "受力分析",
+        "力矩平衡"
+      ],
+      "check": "已知平衡关系 $d/l=\\cos^n\\theta$，写出指数 $n$。",
+      "expected": "3",
+      "result": "$\\theta=\\arccos\\!\\left[(d/l)^{1/3}\\right]$。",
+      "judgment": {
+        "correct": "以墙端为矩心，棱角反力 $N$ 的力矩大小为 $N d/\\cos\\theta$。",
+        "incorrect": "以墙端为矩心，棱角反力 $N$ 的力矩大小为 $Nd$。",
+        "reason": "反力垂直于棒，力臂是沿棒测量的距离 $d/\\cos\\theta$。"
+      },
+      "categoryId": "3",
+      "figure": "figures/prompt-3.2.svg",
+      "source": {
+        "section": "第 3 章 · 刚体力学",
+        "page": "第 176 页",
+        "identity": "a52d6a21508d812827b7da7aecc8fab11c1a3b3288ebbb657a4c54bc07799d5b"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知\n\n均质棒长为 $2l$，重力为 $mg$。棒的端点 $A$ 抵在光滑竖直墙上，棒身在距墙水平距离为 $d$ 的光滑棱角 $P$ 处接触，棒与水平面夹角为 $\\theta$。题设给出 $d\\le l\\cos\\theta$，保证接触点位于棒的相应区段内。\n\n## 求\n\n求平衡时的 $\\theta$。\n\n## 解\n\n**（1）受力分析与几何关系**\n\n墙面光滑，故 $A$ 点反力 $R_A$ 水平；棱角光滑，故 $P$ 点反力 $N$ 垂直于棒；重力 $mg$ 作用于棒的中点，距 $A$ 点为 $l$。\n\n![第 3.2 题受力分析图](./figures/fbd-3-2.svg)\n\n由接触点的水平投影关系，\n\n$$\nAP\\cos\\theta=d,\n\\qquad AP=\\frac{d}{\\cos\\theta}.\n\\tag{1}\n$$\n\n**（2）列平衡方程**\n\n对点 $A$ 取矩，墙面反力 $R_A$ 的力矩为零，得到\n\n$$\nN\\cdot AP-mg\\,l\\cos\\theta=0.\n\\tag{2}\n$$\n\n沿竖直方向列力平衡方程：\n\n$$\nN\\cos\\theta-mg=0,\n\\qquad N=\\frac{mg}{\\cos\\theta}.\n\\tag{3}\n$$\n\n**（3）求解**\n\n将式（1）、（3）代入式（2）：\n\n$$\n\\frac{mg}{\\cos\\theta}\\cdot\\frac{d}{\\cos\\theta}\n=mg\\,l\\cos\\theta.\n$$\n\n约去 $mg$，整理得\n\n$$\nd=l\\cos^3\\theta,\n\\qquad \\cos\\theta=\\left(\\frac dl\\right)^{1/3}.\n$$\n\n由于棒与水平面的夹角取锐角，故\n\n$$\n\\boxed{\\theta=\\arccos\\left(\\frac dl\\right)^{1/3}}.\n$$\n\n## 答\n\n$$\n\\boxed{\\theta=\\arccos\\left(\\frac dl\\right)^{1/3}}.\n$$\n\n与教材印刷答案一致。\n\n## 阅卷要点\n\n1. 正确判断两处光滑接触的反力方向。\n2. 写出 $AP=d/\\cos\\theta$。\n3. 对 $A$ 点取矩。\n4. 利用竖直方向平衡消去支持力，得到 $d=l\\cos^3\\theta$。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "3.4",
+      "title": "绳悬三球的平衡",
+      "prompt": "两根绳子从同一点 $O$ 对称悬挂两个等重光滑球，两球共同托住第三个与它们同重的光滑球。两下球间无水平接触力。每根绳与竖直方向成 $\\alpha$，上球与任一下球的球心连线与竖直方向成 $\\beta$。求两角的关系。",
+      "tags": [
+        "受力分析",
+        "平衡方程"
+      ],
+      "check": "已知 $\\tan\\beta=k\\tan\\alpha$，写出系数 $k$。",
+      "expected": "3",
+      "result": "$\\tan\\beta=3\\tan\\alpha$。",
+      "judgment": {
+        "correct": "下球的绳张力竖直分量为 $T\\cos\\alpha=3mg/2$。",
+        "incorrect": "下球的绳张力竖直分量为 $T\\cos\\alpha=mg$。",
+        "reason": "还需平衡上球施加的竖直分力 $mg/2$。"
+      },
+      "categoryId": "3",
+      "figure": "figures/prompt-3.4.svg",
+      "source": {
+        "section": "第 3 章 · 刚体力学",
+        "page": "第 177 页",
+        "identity": "03474529918b3ea7a1b5a2c6c9f7067e746bbb261435238241c1b3596d91c950"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知\n\n两个相同的下方均质光滑球由两根绳悬挂于固定点 $O$，两绳与竖直方向的夹角均为 $\\alpha$。两球共同支持一个与它们等重的上方均质光滑球。上方球与任一下方球的球心连线和竖直方向的夹角为 $\\beta$。设每个球的重力均为 $mg$。\n\n## 求\n\n求 $\\alpha$ 与 $\\beta$ 的关系。\n\n## 解\n\n**（1）研究上方球**\n\n上方球受重力 $mg$ 以及左右两个下方球的支持力。由对称性，两支持力大小相等，均记为 $N$，方向沿球心连线。上方球竖直方向平衡：\n\n$$\n2N\\cos\\beta-mg=0,\n\\qquad N\\cos\\beta=\\frac{mg}{2}.\n\\tag{1}\n$$\n\n![第 3.4 题隔离体受力图](./figures/fbd-3-4.svg)\n\n**（2）研究右侧下方球**\n\n右侧下方球受三个力：绳张力 $T$、上方球的压力 $N$ 和自身重力 $mg$。由于接触面光滑，球间作用力沿球心连线。分别沿水平方向和竖直方向列平衡方程：\n\n$$\nT\\sin\\alpha-N\\sin\\beta=0,\n\\tag{2}\n$$\n\n$$\nT\\cos\\alpha-N\\cos\\beta-mg=0.\n\\tag{3}\n$$\n\n将式（1）代入式（3）：\n\n$$\nT\\cos\\alpha=mg+\\frac{mg}{2}\n=\\frac{3mg}{2}.\n\\tag{4}\n$$\n\n由式（1）可得\n\n$$\nN\\sin\\beta=N\\cos\\beta\\tan\\beta\n=\\frac{mg}{2}\\tan\\beta.\n$$\n\n代入式（2）：\n\n$$\nT\\sin\\alpha=\\frac{mg}{2}\\tan\\beta.\n\\tag{5}\n$$\n\n**（3）消去未知力**\n\n将式（5）除以式（4）：\n\n$$\n\\tan\\alpha\n=\\frac{\\frac{mg}{2}\\tan\\beta}{\\frac{3mg}{2}}\n=\\frac13\\tan\\beta.\n$$\n\n因此\n\n$$\n\\boxed{\\tan\\beta=3\\tan\\alpha}.\n$$\n\n## 答\n\n$$\n\\boxed{\\tan\\beta=3\\tan\\alpha}.\n$$\n\n与教材印刷答案一致。\n\n## 阅卷要点\n\n1. 利用对称性确定上方球两侧支持力大小相等。\n2. 对上方球列竖直平衡方程，得到 $N\\cos\\beta=mg/2$。\n3. 对下方球列水平、竖直方向平衡方程。\n4. 利用上方球平衡结果消去支持力。\n5. 得到目标角度关系。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "3.5",
+      "title": "粗糙地面和墙之间的梯子",
+      "prompt": "均质梯靠在竖直墙上，梯脚与地面的静摩擦因数为 $1/2$，梯顶与墙的静摩擦因数为 $1/3$。一人重为梯重的三倍，走到梯顶时梯仍静止。求梯与地面夹角的最小值。",
+      "tags": [
+        "静摩擦",
+        "力矩平衡"
+      ],
+      "check": "写出 $\\tan\\theta_{\\min}$ 的分数值。",
+      "expected": "41/24",
+      "result": "$\\theta_{\\min}=\\arctan(41/24)\\approx 59.66^\\circ$。",
+      "judgment": {
+        "correct": "临界外滑时，地面对梯脚的摩擦力指向墙，墙对梯顶的摩擦力向上。",
+        "incorrect": "临界外滑时，墙对梯顶的摩擦力向下。",
+        "reason": "梯顶有下滑趋势，墙的静摩擦力指向上方。"
+      },
+      "categoryId": "3",
+      "figure": "",
+      "source": {
+        "section": "第 3 章 · 刚体力学",
+        "page": "第 176–177 页",
+        "identity": "691450f2d18b97d50ee24f2260fdffdd61af100f8b4e32aa66833edc129e4513"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知\n\n均质梯子长为 $L$，自重为 $G$。地板与梯脚间的摩擦因数为\n\n$$\n\\mu_A=\\frac12,\n$$\n\n高墙与梯顶间的摩擦因数为\n\n$$\n\\mu_B=\\frac13.\n$$\n\n人的体重为梯子自重的三倍，即 $3G$，人位于梯顶。设梯子与地面的夹角为 $\\theta$。\n\n## 求\n\n求梯子尚未滑动时，$\\theta$ 的最小值。\n\n## 解\n\n**（1）受力分析**\n\n梯脚 $A$ 处有地面支持力 $N_A$ 和摩擦力 $F_A$；梯顶 $B$ 处有墙面支持力 $N_B$ 和摩擦力 $F_B$。在临界滑动状态下，梯脚有向左滑动趋势，故 $F_A$ 向右；梯顶有向下滑动趋势，故 $F_B$ 向上。\n\n![第 3.5 题受力分析图](./figures/fbd-3-5.svg)\n\n**（2）列平衡方程与摩擦条件**\n\n水平方向平衡：\n\n$$\nF_A-N_B=0,\n\\qquad F_A=N_B.\n\\tag{1}\n$$\n\n竖直方向平衡：\n\n$$\nN_A+F_B- G-3G=0,\n\\qquad N_A+F_B=4G.\n\\tag{2}\n$$\n\n静摩擦力满足 $F\\le\\mu N$。由式（1）、（2）及对梯脚取矩的方程可写出 $\\tan\\theta=(\\frac72G-F_B)/N_B$。同时有 $F_B\\le N_B/3$ 和 $N_B\\le(4G-F_B)/2$。两条不等式给出 $F_B\\le4G/7$。对给定的 $F_B$，取 $N_B=(4G-F_B)/2$ 可使 $\\tan\\theta$ 最小，此时 $\\tan\\theta=2(\\frac72G-F_B)/(4G-F_B)$ 随 $F_B$ 递减。故最小倾角在 $F_B=4G/7$ 取得，两处接触均达到极限摩擦。\n\n$$\nF_A=\\mu_A N_A=\\frac12N_A,\n\\qquad F_B=\\mu_B N_B=\\frac13N_B.\n\\tag{3}\n$$\n\n由式（1）—（3）得\n\n$$\nN_B=\\frac12N_A,\n\\qquad F_B=\\frac16N_A.\n$$\n\n代入式（2）：\n\n$$\nN_A+\\frac16N_A=4G,\n\\qquad N_A=\\frac{24}{7}G.\n$$\n\n于是\n\n$$\nN_B=F_A=\\frac{12}{7}G,\n\\qquad F_B=\\frac47G.\n\\tag{4}\n$$\n\n**（3）对梯脚取矩**\n\n以梯脚 $A$ 为矩心。梯顶坐标相对 $A$ 为 $(L\\cos\\theta,L\\sin\\theta)$，梯子重力作用于中点，人重力作用于梯顶。取逆时针为正：\n\n$$\nN_B L\\sin\\theta+F_B L\\cos\\theta\n-G\\frac L2\\cos\\theta-3GL\\cos\\theta=0.\n$$\n\n约去 $L\\cos\\theta$：\n\n$$\nN_B\\tan\\theta+F_B=\\frac72G.\n\\tag{5}\n$$\n\n将式（4）代入式（5）：\n\n$$\n\\frac{12}{7}G\\tan\\theta+\\frac47G=\\frac72G.\n$$\n\n整理得\n\n$$\n12\\tan\\theta+4=\\frac{49}{2},\n\\qquad \\tan\\theta=\\frac{41}{24}.\n$$\n\n## 答\n\n$$\n\\boxed{\\theta_{\\min}=\\arctan\\frac{41}{24}\\approx59.66^\\circ}.\n$$\n\n与教材印刷答案一致。\n\n## 阅卷要点\n\n1. 正确判断梯脚、梯顶摩擦力方向。\n2. 列出水平、竖直方向平衡方程。\n3. 说明最小倾角的临界状态，并列出两处极限摩擦条件。\n4. 求出四个接触反力的大小。\n5. 对梯脚取矩并求出 $\\tan\\theta$。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "3.9",
+      "title": "立方体绕体对角线的回转半径",
+      "prompt": "均质立方体的体对角线长度为 $d$。推导绕这条对角线转动时的回转半径 $k$。",
+      "tags": [
+        "惯量张量",
+        "回转半径"
+      ],
+      "check": "求 $k^2/d^2$，写出分数值。",
+      "expected": "1/18",
+      "result": "$k=\\dfrac{d}{3\\sqrt 2}$。",
+      "judgment": {
+        "correct": "立方体关于质心的惯量张量在平行于棱的坐标系中等于 $ml^2/6$ 乘单位矩阵。",
+        "incorrect": "绕体对角线的转动惯量等于沿三个棱方向的质心轴转动惯量之和。",
+        "reason": "用对角线的单位向量投影，三个方向的权重之和为 $1$。"
+      },
+      "categoryId": "3",
+      "figure": "",
+      "source": {
+        "section": "第 3 章 · 刚体力学",
+        "page": "第 178 页",
+        "identity": "4322194917d875aff436ea6ae9296f40a53dbff2ebdec28501f154a9bc8034ae"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知与求\n\n设立方体质量为 $m$，棱长为 $l$，体对角线长度为 $d$。转轴为立方体的一条体对角线，求回转半径 $k$。\n\n## 解\n\n**（1）求立方体质心处的转动惯量张量。**\n\n取立方体质心 $C$ 为坐标原点，三坐标轴分别平行于立方体的三条棱。由立方体的对称性，三个坐标轴是质心处的主轴，且三个主转动惯量相等。以 $x$ 轴为例，\n\n$$\nI_{xx}=\\int (y^2+z^2)\\,\\mathrm dm\n      =\\frac{ml^2}{6}.\n$$\n\n因此\n\n$$\n\\mathsf{I}_C=\n\\begin{pmatrix}\nml^2/6&0&0\\\\\n0&ml^2/6&0\\\\\n0&0&ml^2/6\n\\end{pmatrix}\n=\\frac{ml^2}{6}\\mathsf{1}.\n$$\n\n**（2）求体对角线方向的转动惯量。**\n\n体对角线通过质心，其方向单位矢量可取为\n\n$$\n\\vec{n}=\\frac{1}{\\sqrt3}(1,1,1)^{\\mathsf T}.\n$$\n\n绕该轴的转动惯量为\n\n$$\nI_{\\vec{n}}=\\vec{n}^{\\mathsf T}\\mathsf{I}_C\\vec{n}\n=\\frac{ml^2}{6}\\,\\vec{n}^{\\mathsf T}\\vec{n}\n=\\frac{ml^2}{6}.\n$$\n\n**（3）由回转半径定义求解。**\n\n回转半径满足 $I_{\\vec{n}}=mk^2$，故\n\n$$\nk=\\sqrt{\\frac{I_{\\vec{n}}}{m}}\n=\\frac{l}{\\sqrt6}.\n$$\n\n又因体对角线长度 $d=\\sqrt3\\,l$，于是\n\n$$\n\\boxed{k=\\frac{d}{3\\sqrt2}}.\n$$\n\n## 答\n\n立方体绕任一体对角线转动时，其回转半径为\n\n$$\n\\boxed{k=\\frac{d}{3\\sqrt2}}.\n$$\n\n## 阅卷要点\n\n- 坐标轴应取为过质心且平行于立方体棱的三条轴。\n- 必须说明体对角线通过质心，且方向单位矢量的模为 1。\n- 回转半径使用 $I=mk^2$，不能把 $I$ 与 $k$ 混淆。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "3.10",
+      "title": "粗糙水平面上圆盘的停转",
+      "prompt": "均质圆盘半径为 $a$，在粗糙水平桌面上绕过圆心的竖直轴转动，初始角速度大小为 $\\omega_0$。假设接触压强均匀，滑动摩擦因数为 $\\mu$。求停转时间。",
+      "tags": [
+        "摩擦力矩",
+        "转动定理"
+      ],
+      "check": "已知停转时间为 $k a\\omega_0/(\\mu g)$，写出系数 $k$。",
+      "expected": "3/4",
+      "result": "$t_s=\\dfrac{3a\\omega_0}{4\\mu g}$。",
+      "judgment": {
+        "correct": "距轴 $r$ 的接触面元产生的力矩大小为 $r\\,\\mathrm dF_f$。",
+        "incorrect": "总摩擦力矩大小等于 $\\mu mg\\,a$。",
+        "reason": "各接触面元的力臂随 $r$ 变化。积分得到等效力臂 $2a/3$。"
+      },
+      "categoryId": "3",
+      "figure": "",
+      "source": {
+        "section": "第 3 章 · 刚体力学",
+        "page": "第 178 页",
+        "identity": "44198c3502c93390882a16aaf0c4b5511b4fc9ba120bde2dabd46568e3cf402b"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知与求\n\n均质圆盘质量为 $m$、半径为 $a$，绕通过圆心的竖直轴转动，初角速度为 $\\omega_0$。圆盘与桌面间的滑动摩擦因数为 $\\mu$，重力加速度为 $g$。求圆盘停止所需时间 $t_s$。\n\n## 解\n\n**（1）建立摩擦力矩。**\n\n圆盘转动时，除圆心外的各面元相对桌面滑动。取距转轴 $r$、宽度为 $\\mathrm dr$ 的圆环面元。设面密度为\n\n$$\n\\sigma=\\frac{m}{\\pi a^2},\n$$\n\n则\n\n$$\n\\mathrm dm=2\\pi\\sigma r\\,\\mathrm dr.\n$$\n\n按均质圆盘在水平桌面上的均匀法向载荷模型，面元所受滑动摩擦力大小为\n\n$$\n\\mathrm dF=\\mu g\\,\\mathrm dm.\n$$\n\n该摩擦力对竖直转轴的力矩方向与圆盘转动方向相反，力矩大小为\n\n$$\n\\mathrm dM=r\\,\\mathrm dF=\\mu g r\\,\\mathrm dm.\n$$\n\n对整个圆盘积分，得摩擦力矩大小\n\n$$\n\\begin{aligned}\nM_f\n&=\\mu g\\int_0^a r\\,\\mathrm dm\\\\\n&=2\\pi\\sigma\\mu g\\int_0^a r^2\\,\\mathrm dr\\\\\n&=\\frac{2}{3}\\mu mga.\n\\end{aligned}\n$$\n\n**（2）列转动定理。**\n\n均质圆盘对中心竖直轴的转动惯量为\n\n$$\nI_z=\\frac12 ma^2.\n$$\n\n由定轴转动定理，\n\n$$\nI_z\\frac{\\mathrm d\\omega}{\\mathrm dt}=-M_f.\n$$\n\n代入上式，\n\n$$\n\\frac12 ma^2\\frac{\\mathrm d\\omega}{\\mathrm dt}\n=-\\frac23\\mu mga,\n$$\n\n所以角加速度为常量：\n\n$$\n\\frac{\\mathrm d\\omega}{\\mathrm dt}\n=-\\frac{4\\mu g}{3a}.\n$$\n\n**（3）积分并使用停止条件。**\n\n由初始条件 $\\omega(0)=\\omega_0$，得\n\n$$\n\\omega(t)=\\omega_0-\\frac{4\\mu g}{3a}t.\n$$\n\n圆盘停止时 $\\omega(t_s)=0$，因此\n\n$$\n\\boxed{t_s=\\frac{3a\\omega_0}{4\\mu g}}.\n$$\n\n## 答\n\n圆盘在摩擦力矩作用下作角减速度恒定的转动，停止时间为\n\n$$\n\\boxed{t_s=\\frac{3a\\omega_0}{4\\mu g}}.\n$$\n\n## 阅卷要点\n\n- 摩擦力矩应按圆盘面元积分，不能直接用 $\\mu mg\\cdot a$ 代替。\n- 圆盘转动惯量为 $I_z=\\frac12ma^2$。\n- 摩擦力矩与角速度方向相反，转动方程右端应取负号。\n- 结果量纲为时间：$a\\omega_0/g\\sim \\mathrm s$。",
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "id": "3.30",
+      "title": "纯滚动碾轮最高点的运动",
+      "prompt": "半径 $b$ 的碾轮在水平面上无滑动滚动，水平轮轴绕竖直轴匀速转动，角速度大小为 $\\omega$。轮心 $A$ 到竖直轴的水平距离为 $c$。求轮缘上瞬时最高点 $M$ 的速度与加速度大小。",
+      "tags": [
+        "刚体运动",
+        "纯滚动",
+        "叉积"
+      ],
+      "check": "已知最高点的速率 $v_M=k c\\omega$，写出系数 $k$。",
+      "expected": "2",
+      "result": "$v_M=2c\\omega$，$a_M=c\\omega^2\\sqrt{9+(c/b)^2}$。",
+      "judgment": {
+        "correct": "接触点 $P$ 对地瞬时静止，$\\vec v_P=\\vec 0$。",
+        "incorrect": "瞬时最高点 $M$ 对地静止，$\\vec v_M=\\vec 0$。",
+        "reason": "无滑动条件施加在接触点；最高点的转动速度与轮心速度同向。"
+      },
+      "categoryId": "3",
+      "figure": "figures/prompt-3.30.svg",
+      "source": {
+        "section": "第 3 章 · 刚体力学",
+        "page": "第 181 页",
+        "identity": "75d2f579e372eda53223e4bc0ebb6f927abcc688af640c88cea6b382261020d5"
+      },
+      "variants": [
+        {
+          "id": "common",
+          "solution": "## 已知与求\n\n碾轮边缘沿水平面作纯滚动；轮的水平轴以匀角速度 $\\omega$ 绕铅垂轴 $OB$ 转动。已知 $OA=c$、$OB=b$。求轮上瞬时最高点 $M$ 的速度及加速度的量值。\n\n## 解\n\n由图可知，轮心 $A$ 到水平桌面的高度等于碾轮半径；该高度为 $OB=b$，因此\n$AP=AM=b$。\n\n**（1）建立柱坐标单位矢量并分析轮心运动。**\n\n取竖直向上为 $\\vec{e}_z$，由 $O$ 指向轮心 $A$ 的水平方向为 $\\vec{e}_r$，并定义\n\n$$\n\\vec{e}_\\varphi=\\vec{e}_z\\times\\vec{e}_r.\n$$\n\n三者构成右手正交基。由于 $OA=c$，且轮轴绕竖直轴以角速度 $\\omega$ 匀速转动，轮心 $A$ 作半径为 $c$ 的水平圆周运动：\n\n$$\n\\vec{v}_A=c\\omega\\vec{e}_\\varphi,\n\\qquad\n\\vec{a}_A=-c\\omega^2\\vec{e}_r.\n$$\n\n**（2）由纯滚动条件求轮的自转角速度。**\n\n轮的总角速度由轴线随竖直轴转动的角速度和轮绕自身水平轴的自转角速度组成。设后者为 $\\Omega_s$，则\n\n$$\n\\vec{\\Omega}=\\omega\\vec{e}_z+\\Omega_s\\vec{e}_r.\n$$\n\n设轮缘与水平面的瞬时接触点为 $P$。由于轮半径为 $b$，有\n\n$$\n\\vec{r}_{AP}=-b\\vec{e}_z.\n$$\n\n纯滚动意味着接触点相对地面瞬时静止，即\n\n$$\n\\vec{v}_P\n=\\vec{v}_A+\\vec{\\Omega}\\times\\vec{r}_{AP}\n=\\vec{0}.\n$$\n\n代入并利用 $\\vec{e}_r\\times\\vec{e}_z=-\\vec{e}_\\varphi$，得\n\n$$\n(c\\omega+b\\Omega_s)\\vec{e}_\\varphi=\\vec{0},\n$$\n\n所以\n\n$$\n\\Omega_s=-\\frac{c\\omega}{b},\n\\qquad\n\\vec{\\Omega}\n=\\omega\\vec{e}_z-\\frac{c\\omega}{b}\\vec{e}_r.\n$$\n\n**（3）求最高点 $M$ 的速度。**\n\n瞬时最高点满足\n\n$$\n\\vec{r}_{AM}=b\\vec{e}_z.\n$$\n\n由刚体速度公式，\n\n$$\n\\begin{aligned}\n\\vec{v}_M\n&=\\vec{v}_A+\\vec{\\Omega}\\times\\vec{r}_{AM}\\\\\n&=c\\omega\\vec{e}_\\varphi\n+\\left(\\omega\\vec{e}_z-\\frac{c\\omega}{b}\\vec{e}_r\\right)\n\\times b\\vec{e}_z\\\\\n&=2c\\omega\\vec{e}_\\varphi.\n\\end{aligned}\n$$\n\n因此速度量值为\n\n$$\n\\boxed{v_M=2c\\omega}.\n$$\n\n**（4）求最高点 $M$ 的加速度。**\n\n因为 $\\omega$、$c$、$b$ 均为常量，且\n\n$$\n\\frac{\\mathrm d\\vec{e}_r}{\\mathrm dt}\n=\\omega\\vec{e}_\\varphi,\n$$\n\n所以轮的角加速度为\n\n$$\n\\vec{\\alpha}\n=\\frac{\\mathrm d\\vec{\\Omega}}{\\mathrm dt}\n=-\\frac{c\\omega^2}{b}\\vec{e}_\\varphi.\n$$\n\n由刚体上点的加速度公式，\n\n$$\n\\vec{a}_M\n=\\vec{a}_A\n+\\vec{\\alpha}\\times\\vec{r}_{AM}\n+\\vec{\\Omega}\\times\n(\\vec{\\Omega}\\times\\vec{r}_{AM}).\n$$\n\n各项分别为\n\n$$\n\\vec{a}_A=-c\\omega^2\\vec{e}_r,\n$$\n\n$$\n\\vec{\\alpha}\\times\\vec{r}_{AM}\n=-c\\omega^2\\vec{e}_r,\n$$\n\n以及\n\n$$\n\\vec{\\Omega}\\times\n(\\vec{\\Omega}\\times\\vec{r}_{AM})\n=-c\\omega^2\\vec{e}_r\n-\\frac{c^2\\omega^2}{b}\\vec{e}_z.\n$$\n\n故\n\n$$\n\\vec{a}_M\n=-3c\\omega^2\\vec{e}_r\n-\\frac{c^2\\omega^2}{b}\\vec{e}_z.\n$$\n\n由于 $\\vec{e}_r\\perp\\vec{e}_z$，加速度量值为\n\n$$\n\\begin{aligned}\na_M\n&=\\sqrt{(3c\\omega^2)^2+\n\\left(\\frac{c^2\\omega^2}{b}\\right)^2}\\\\\n&=c\\omega^2\\sqrt{9+\\left(\\frac cb\\right)^2}.\n\\end{aligned}\n$$\n\n因此\n\n$$\n\\boxed{a_M=c\\omega^2\\sqrt{9+\\left(\\frac cb\\right)^2}}.\n$$\n\n## 答\n\n$$\n\\boxed{v_M=2c\\omega},\n\\qquad\n\\boxed{a_M=c\\omega^2\\sqrt{9+\\left(\\frac cb\\right)^2}}.\n$$\n\n与原书第 181 页所列结果一致。\n\n## 阅卷要点\n\n- 轮心 $A$ 作半径为 $c$ 的水平圆周运动，不能把轮心视为静止。\n- 总角速度必须包含轴线绕竖直轴转动的分量 $\\omega\\vec{e}_z$。\n- 纯滚动条件施加于接触点 $P$，即 $\\vec{v}_P=0$。\n- 求加速度时必须保留 $\\vec{\\alpha}\\times\\vec{r}$ 项和向心项 $\\vec{\\Omega}\\times(\\vec{\\Omega}\\times\\vec{r})$。\n- “瞬时最高点”是当前时刻位于最高位置的轮缘质点；不能把每一时刻的最高点误认为同一个质点，再对速度量值直接求导。",
+          "revision": 1
+        }
+      ]
+    }
+  ]
+}
