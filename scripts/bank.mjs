@@ -62,7 +62,7 @@ const questions = await Promise.all(
   }),
 );
 const bank = {
-  bankVersion: 1,
+  bankVersion: 2,
   categories,
   rules: (await read("sources/rules.md")).trim(),
   questions,
